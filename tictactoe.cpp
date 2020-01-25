@@ -81,10 +81,22 @@ bool play_turn(int cnt, Board &board) {
 void player_turn(Board &board) {
 	int x;
 	int y;
-	
-	std::cout << "Your turn: ";
-	std::cin >> x;
-	std::cin >> y;
+	while (true) {
+		std::cout << "Your turn: ";
+		std::cin >> x;
+		std::cin >> y;
+		if (1 <= x && x <= 3 && 1 <= y && y <= 3) {
+			if (board.get_board()[x - 1][y - 1].get_status() == ' ') {
+				break;
+			}
+			else {
+				std::cout << "Cell is taken\n";
+			}
+		}
+		else {
+			std::cout << "Enter two numbers between 1 and 3\n";
+		}
+	}
 	
 	board.set_cell(x - 1, y - 1, PLAYER_CHAR); // UI is 1-indexed, but Board starts at 0
 }
@@ -104,7 +116,7 @@ void ai_turn(Board &board) {
 		}
 	}
 	
-	std::cout << "AI plays at: " << x << " " << y << std::endl;
+	std::cout << "AI plays at: " << x + 1 << " " << y + 1 << std::endl;
 	
 	board.set_cell(x, y, AI_CHAR);
 }
