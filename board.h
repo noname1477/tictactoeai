@@ -7,10 +7,14 @@
 
 class Board {
 	public:
-		std::vector<std::vector<char>> get_board();
+		Board();
+		bool set_cell(int x, int y, char status);
+		std::vector<std::vector<Cell>> get_board();
+		void print_board();
 		
 	private:
-		std::vector<std::vector<char>> board = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+		std::vector<std::vector<Cell>> board;
+		void throw_invalid_cell_exception(int x, int y);
 };
 
 #endif

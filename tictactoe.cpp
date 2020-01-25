@@ -10,6 +10,9 @@ void do_menu_action( int choice );
 
 int main()
 {
+	Board board;
+	board.set_cell(2, 1, 'X');
+	board.print_board();
 	std::cout << "Welcome to Tic Tac Toe v0.0.1!";
 	while( true )
 	{
@@ -39,6 +42,8 @@ void do_menu_action( int choice )
 			exit( EXIT_SUCCESS );
 		case 1:
 			start_game();
+			break;
+		default:
 			break;
 	}
 }

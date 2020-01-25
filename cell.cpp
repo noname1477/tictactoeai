@@ -22,10 +22,10 @@ bool Cell::set_status(char status) {
 
 void Cell::throw_invalid_char_exception(char status) {
 	try {
-			throw "error: can't assign char \'" + std::string(1, status)+ "\' to cell (only \' \', \'X\' and \'O\' allowed)";
-		}
-		catch (std::string e) {
-			std::cout << e << std::endl;
-			exit(EXIT_FAILURE);
-		}
+		throw "error: can't assign char \'" + std::string(1, status)+ "\' to cell (only \' \', \'X\' and \'O\' allowed)";
+	}
+	catch (std::string e) {
+		std::cout << e << std::endl;
+		exit(EXIT_FAILURE);
+	}
 }
