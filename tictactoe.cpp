@@ -8,9 +8,12 @@ void get_menu_input( int &choice );
 void do_menu_action( int choice );
 
 void play_game();
-bool play_turn(int cnt, Board board);
-void player_turn();
-void ai_turn();
+bool play_turn(int cnt, Board &board);
+void player_turn(Board &board);
+void ai_turn(Board &board);
+
+const char PLAYER_CHAR = 'X';
+const char AI_CHAR = 'O';
 
 int main() {
 	std::cout << "Welcome to Tic Tac Toe v0.0.1!";
@@ -49,8 +52,10 @@ void play_game() {
 	int cnt;
 	
 	while (true) {
-		bool finished = play_turn(cnt, board);
+		bool finished;
 		
+		board.print_board();
+		finished = play_turn(cnt, board);
 		if (finished) {
 			break;
 		}
@@ -59,21 +64,29 @@ void play_game() {
 	}
 }
 
-bool play_turn(int cnt, Board board) {
+bool play_turn(int cnt, Board &board) {
 	if (cnt % 2 == 0) {
-		player_turn();
+		player_turn(board);
 	}
 	else {
-		ai_turn();
+		ai_turn(board);
 	}
 	
 	return board.game_ended();
 }
 
-void player_turn() {
+void player_turn(Board &board) {
+	int x;
+	int y;
 	
+	std::cout << "Your turn: ";
+	std::cin >> x;
+	std::cin >> y;
+	
+	board.set_cell(x, y, PLAYER_CHAR);
+	board.print_board();
 }
 
-void ai_turn() {
+void ai_turn(Board &board) {
 	
 }

@@ -44,13 +44,36 @@ void Board::throw_invalid_cell_exception(int x, int y) {
 }
 
 void Board::print_board() {
+	std::cout << std::endl;
 	std::cout << " " << board[0][0].get_status() << " | " << board[1][0].get_status() << " | " << board[2][0].get_status() << std::endl;
 	std::cout << "---+---+---" << std::endl;
 	std::cout << " " << board[0][1].get_status() << " | " << board[1][1].get_status() << " | " << board[2][1].get_status() << std::endl;
 	std::cout << "---+---+---" << std::endl;
 	std::cout << " " << board[0][2].get_status() << " | " << board[1][2].get_status() << " | " << board[2][2].get_status() << std::endl;
+	std::cout << std::endl;
 }
 
 bool Board::game_ended() {
-	return false;
+	bool ended = false;
+	
+	for (int i = 0; i < 3; i++) {
+		if (board[i][0].get_status() == board[i][1].get_status() && board[i][1].get_status() == board[i][2].get_status() && board[i][1].get_status() != ' ') {
+			ended = true;
+		}
+	}
+	
+	for (int i = 0; i < 3; i++) {
+		if (board[0][i].get_status() == board[1][i].get_status() && board[1][i].get_status() == board[2][i].get_status() && board[1][i].get_status() != ' ') {
+			ended = true;
+		}
+	}
+	
+	if (board[0][0].get_status() == board[1][1].get_status() && board[1][1].get_status() == board[2][2].get_status() && board[1][1].get_status() != ' ') {
+		ended = true;
+	}
+	
+	if (board[2][0].get_status() == board[1][1].get_status() && board[1][1].get_status() == board[0][2].get_status() && board[1][1].get_status() != ' ') {
+		ended = true;
+	}
+	return ended;
 }
