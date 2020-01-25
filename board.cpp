@@ -45,11 +45,12 @@ void Board::throw_invalid_cell_exception(int x, int y) {
 
 void Board::print_board() {
 	std::cout << std::endl;
-	std::cout << " " << board[0][0].get_status() << " | " << board[1][0].get_status() << " | " << board[2][0].get_status() << std::endl;
-	std::cout << "---+---+---" << std::endl;
-	std::cout << " " << board[0][1].get_status() << " | " << board[1][1].get_status() << " | " << board[2][1].get_status() << std::endl;
-	std::cout << "---+---+---" << std::endl;
-	std::cout << " " << board[0][2].get_status() << " | " << board[1][2].get_status() << " | " << board[2][2].get_status() << std::endl;
+	std::cout << "   1   2   3" << std::endl;
+	std::cout << "1  " << board[0][0].get_status() << " | " << board[1][0].get_status() << " | " << board[2][0].get_status() << std::endl;
+	std::cout << "  ---+---+---" << std::endl;
+	std::cout << "2  " << board[0][1].get_status() << " | " << board[1][1].get_status() << " | " << board[2][1].get_status() << std::endl;
+	std::cout << "  ---+---+---" << std::endl;
+	std::cout << "3  " << board[0][2].get_status() << " | " << board[1][2].get_status() << " | " << board[2][2].get_status() << std::endl;
 	std::cout << std::endl;
 }
 

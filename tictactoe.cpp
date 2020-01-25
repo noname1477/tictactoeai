@@ -83,7 +83,7 @@ void player_turn(Board &board) {
 	std::cin >> x;
 	std::cin >> y;
 	
-	board.set_cell(x, y, PLAYER_CHAR);
+	board.set_cell(x - 1, y - 1, PLAYER_CHAR); // UI is 1-indexed, but Board starts at 0
 	board.print_board();
 }
 
