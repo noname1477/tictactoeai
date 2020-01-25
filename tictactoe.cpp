@@ -49,14 +49,17 @@ void do_menu_action( int choice ) {
 
 void play_game() {
 	Board board;
-	int cnt;
+	int cnt = 0;
 	
 	while (true) {
 		bool finished;
 		
 		board.print_board();
+		
 		finished = play_turn(cnt, board);
+		
 		if (finished) {
+			board.print_board();
 			break;
 		}
 		
@@ -84,9 +87,24 @@ void player_turn(Board &board) {
 	std::cin >> y;
 	
 	board.set_cell(x - 1, y - 1, PLAYER_CHAR); // UI is 1-indexed, but Board starts at 0
-	board.print_board();
 }
 
 void ai_turn(Board &board) {
+	int x = 0;
+	int y = 0;
+	bool played = false;
 	
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			if (board.get_board()[i][j].get_status() == ' ' && !played) {
+				x = i;
+				y = j;
+				played = true;
+			}
+		}
+	}
+	
+	std::cout << "AI plays at: " << x << " " << y << std::endl;
+	
+	board.set_cell(x, y, AI_CHAR);
 }
