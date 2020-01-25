@@ -8,9 +8,12 @@
 class Board {
 	public:
 		Board();
+		
 		bool set_cell(int x, int y, char status);
 		std::vector<std::vector<Cell>> get_board();
+		
 		void print_board();
+		bool game_ended();
 		
 	private:
 		std::vector<std::vector<Cell>> board;

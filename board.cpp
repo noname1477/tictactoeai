@@ -50,3 +50,7 @@ void Board::print_board() {
 	std::cout << "---+---+---" << std::endl;
 	std::cout << " " << board[0][2].get_status() << " | " << board[1][2].get_status() << " | " << board[2][2].get_status() << std::endl;
 }
+
+bool Board::game_ended() {
+	return false;
+}
